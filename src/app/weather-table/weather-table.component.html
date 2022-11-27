@@ -1,0 +1,38 @@
+<div class="mat-elevation-z8 fit-content">
+  <div>
+    <button mat-raised-button color="primary" (click)="refreshData()">Refresh Data</button>
+  </div>
+
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef> Time </th>
+      <td mat-cell *matCellDef="let weatherData"> {{weatherData.theTime}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="temperature">
+      <th mat-header-cell *matHeaderCellDef> Temperature </th>
+      <td mat-cell *matCellDef="let weatherData"> {{weatherData?.theTemperature}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="humidity">
+      <th mat-header-cell *matHeaderCellDef> Humidity </th>
+      <td mat-cell *matCellDef="let weatherData"> {{weatherData?.theHumidity}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="windspeed">
+      <th mat-header-cell *matHeaderCellDef> Windspeed </th>
+      <td mat-cell *matCellDef="let weatherData"> {{weatherData?.theWindSpeed}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>
